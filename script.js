@@ -29,7 +29,6 @@ video.addEventListener('play', () => {
     //console.log('Box: ', detections[0].detection.box);
     extractFaceFromBox(video, detections[ 0 ].detection.box)
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    console.log(resizedDetections)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     faceapi.draw.drawDetections(canvas, resizedDetections)
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
@@ -56,10 +55,6 @@ async function extractFaceFromBox(inputImage, box) {
 
   let faceImages = await faceapi.extractFaces(inputImage, regionsToExtract)
 
-  console.log('length:', faceImages.length)
-  if (faceImages.length > 1) {
-    alert("multiple faces found")
-  }
   // else
   // {
   //     faceImages.forEach(cnv =>{      
